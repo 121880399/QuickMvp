@@ -51,6 +51,8 @@ dependencies {
     compile(rootProject.ext.dependencies["butterknife"]) {
         exclude module: 'support-annotations'
     }
+    //进度条
+    compile(rootProject.ext.dependencies["circleprogress"])
 
     //rx
     compile rootProject.ext.dependencies["rxjava2"]
