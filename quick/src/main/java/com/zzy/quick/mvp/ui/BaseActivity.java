@@ -5,11 +5,15 @@ import android.os.Bundle;
 import android.support.annotation.Nullable;
 import android.view.Menu;
 
+import com.tbruyelle.rxpermissions2.RxPermissions;
 import com.trello.rxlifecycle2.components.support.RxAppCompatActivity;
 import com.zzy.quick.mvp.presenter.IPresenter;
+import com.zzy.quick.utils.ButterKnifeUtil;
 import com.zzy.quick.utils.log.LogFactory;
 
 import org.simple.eventbus.EventBus;
+
+import butterknife.Unbinder;
 
 /**
  * 项目名称: QuickMvp
@@ -20,6 +24,8 @@ import org.simple.eventbus.EventBus;
 public abstract class BaseActivity<P extends IPresenter> extends RxAppCompatActivity implements IView<P>{
         private P mPresenter;
         private Context mContext;
+        private Unbinder unbinder;
+        private RxPermissions rxPermissions;
 
         @Override
         protected void onCreate(@Nullable Bundle savedInstanceState) {
@@ -92,7 +98,20 @@ public abstract class BaseActivity<P extends IPresenter> extends RxAppCompatActi
                 if(getPresenter()!=null){
                         getPresenter().detachView();
                 }
+                //butterKnife解除绑定
+                if(unbinder!=Unbinder.EMPTY){
+                        unbinder.unbind();
+                }
                 mPresenter=null;
+        }
+
+        /**
+         * 得到RxPermission对象
+         * */
+        public RxPermissions getRxPermissions(){
+                rxPermissions=new RxPermissions(this);
+                rxPermissions.setLogging(true);
+                return rxPermissions;
         }
 
 
@@ -114,7 +133,11 @@ public abstract class BaseActivity<P extends IPresenter> extends RxAppCompatActi
         /**
          * 初始化View
          * */
-        public abstract void initView();
+        public  void initView(){
+                //注册ButterKnife
+                unbinder=ButterKnifeUtil.bind(this);
+                LogFactory.getLogUtil().d("base initView");
+        }
         /**
          * 初始化数据
          * */

@@ -37,7 +37,9 @@ ext {
             "okhttp3"                  : "com.squareup.okhttp3:okhttp:3.8.0",
             "okhttp-urlconnection"     : "com.squareup.okhttp:okhttp-urlconnection:2.0.0",
             "glide"                    : "com.github.bumptech.glide:glide:3.8.0",
+            "glide-okhttp3"            : "com.github.bumptech.glide:okhttp3-integration:1.4.0@aar",
             "picasso"                  : "com.squareup.picasso:picasso:2.5.2",
+            "progress"                 : "me.jessyan:progressmanager:1.3.3",
 
             //view
             "autolayout"               : "com.zhy:autolayout:1.4.5",

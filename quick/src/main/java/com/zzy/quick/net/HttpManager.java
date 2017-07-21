@@ -15,6 +15,7 @@ import io.reactivex.FlowableTransformer;
 import io.reactivex.android.schedulers.AndroidSchedulers;
 import io.reactivex.annotations.NonNull;
 import io.reactivex.schedulers.Schedulers;
+import me.jessyan.progressmanager.ProgressManager;
 import okhttp3.CookieJar;
 import okhttp3.Interceptor;
 import okhttp3.OkHttpClient;
@@ -115,7 +116,7 @@ public class HttpManager {
         return retrofit;
     }
 
-    private OkHttpClient getClient(String baseUrl,NetProvider provider){
+    public OkHttpClient getClient(String baseUrl,NetProvider provider){
         if(TextUtils.isEmpty(baseUrl)){
             throw new IllegalStateException("BaseUrl can not be null");
         }
@@ -164,7 +165,13 @@ public class HttpManager {
             builder.addInterceptor(logInterceptor);
         }
 
-        OkHttpClient client = builder.build();
+        OkHttpClient client = null;
+        //如果使用了进度监听
+        if(provider.useProgress()){
+            client= ProgressManager.getInstance().with(builder).build();
+        }
+
+        client= builder.build();
         clientMap.put(baseUrl,client);
         providerMap.put(baseUrl,provider);
 

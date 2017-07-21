@@ -39,4 +39,9 @@ public interface NetProvider {
     boolean configLogEnable();
 
     boolean handleError(NetError error);
+
+    /**
+     * 是否使用进度监听
+     * */
+    boolean useProgress();
 }

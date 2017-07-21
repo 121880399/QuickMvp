@@ -105,6 +105,9 @@ dependencies {
     }
     compile rootProject.ext.dependencies["okhttp3"]
     compile rootProject.ext.dependencies["glide"]
+    compile rootProject.ext.dependencies["glide-okhttp3"]
+
+    compile rootProject.ext.dependencies["progress"]
 
     //tools
     provided rootProject.ext.dependencies["javax.annotation"]
