@@ -12,8 +12,12 @@ import java.util.concurrent.TimeUnit;
 
 import io.reactivex.Flowable;
 import io.reactivex.FlowableTransformer;
+import io.reactivex.Observable;
+import io.reactivex.ObservableSource;
+import io.reactivex.ObservableTransformer;
 import io.reactivex.android.schedulers.AndroidSchedulers;
 import io.reactivex.annotations.NonNull;
+import io.reactivex.functions.Function;
 import io.reactivex.schedulers.Schedulers;
 import me.jessyan.progressmanager.ProgressManager;
 import okhttp3.CookieJar;
@@ -205,14 +209,56 @@ public class HttpManager {
     }
 
     /**
-     * 切换线程
+     * 切换线程返回FlowableTransformer
      * */
-    public static <T extends IModel> FlowableTransformer<T,T> getScheduler(){
+    public static <T extends IModel> FlowableTransformer<T,T> getFlowableScheduler(){
         return new FlowableTransformer<T, T>() {
             @Override
-            public Publisher<T> apply(@NonNull Flowable<T> upstream) {
+            public Publisher<T> apply(Flowable<T> upstream) {
                 return upstream.subscribeOn(Schedulers.io())
                         .observeOn(AndroidSchedulers.mainThread());
+            }
+        };
+    }
+
+    /**
+     * 切换线程返回ObservableTransformer
+     * */
+    public static <T extends  IModel> ObservableTransformer<T,T> getObservableScheduler(){
+        return new ObservableTransformer<T, T>() {
+            @Override
+            public ObservableSource<T> apply(@NonNull Observable<T> upstream) {
+                return upstream.subscribeOn(Schedulers.io())
+                        .observeOn(AndroidSchedulers.mainThread());
+            }
+        };
+    }
+
+    /**
+     * 异常处理变换
+     *
+     * @return
+     */
+    public static <T extends IModel> FlowableTransformer<T, T> getErrorTransformer() {
+
+        return new FlowableTransformer<T, T>() {
+            @Override
+            public Publisher<T> apply(Flowable<T> upstream) {
+                return upstream.flatMap(new Function<T, Publisher<T>>() {
+                    @Override
+                    public Publisher<T> apply(T model) throws Exception {
+
+                        if (model == null || model.isNull()) {
+                            return Flowable.error(new NetError(model.getErrorMsg(), NetError.NoDataError));
+                        } else if (model.isAuthError()) {
+                            return Flowable.error(new NetError(model.getErrorMsg(), NetError.AuthError));
+                        } else if (model.isBizError()) {
+                            return Flowable.error(new NetError(model.getErrorMsg(), NetError.BusinessError));
+                        } else {
+                            return Flowable.just(model);
+                        }
+                    }
+                });
             }
         };
     }

@@ -66,9 +66,8 @@ public class LogInterceptor implements Interceptor {
                 MediaType mediaType=body.contentType();
                 if (mediaType != null) {
                     if(isText(mediaType)){
-                        String resp=body.toString();
-                        LogFactory.getLogUtil().d(TAG,resp);
-
+                        String resp=body.string();
+                        LogFactory.getLogUtil().json(resp);
                         body=ResponseBody.create(mediaType,resp);
                         return response.newBuilder().body(body).build();
                     }

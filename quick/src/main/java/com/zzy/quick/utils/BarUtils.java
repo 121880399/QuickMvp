@@ -12,6 +12,7 @@ import android.support.annotation.NonNull;
 import android.support.annotation.Nullable;
 import android.support.design.widget.CoordinatorLayout;
 import android.support.v4.widget.DrawerLayout;
+import android.support.v7.app.ActionBar;
 import android.util.TypedValue;
 import android.view.KeyCharacterMap;
 import android.view.KeyEvent;
@@ -627,5 +628,12 @@ public final class BarUtils {
         } else {
             return 0;
         }
+    }
+
+    /**
+     * 隐藏ActionBar
+     * */
+    public static void hideActionBar(ActionBar actionBar){
+        actionBar.hide();
     }
 }

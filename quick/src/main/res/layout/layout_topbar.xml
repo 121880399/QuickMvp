@@ -1,0 +1,73 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:orientation="vertical"
+    >
+
+    <RelativeLayout
+        android:id="@+id/topbar_view"
+        android:layout_width="match_parent"
+        android:layout_height="40dp"
+        android:background="#FFFFFF"
+        android:gravity="center_vertical"
+        >
+
+        <ImageView
+            android:id="@+id/iv_actionBarLeft"
+            android:layout_width="45dp"
+            android:layout_height="20dp"
+            android:layout_centerVertical="true"
+            android:src="@mipmap/ic_back" />
+
+        <TextView
+            android:id="@+id/tv_actionBarLeft"
+            android:layout_width="wrap_content"
+            android:layout_height="match_parent"
+            android:layout_marginLeft="5dp"
+            android:layout_toRightOf="@+id/iv_actionBarLeft"
+            android:gravity="center_vertical"
+            android:text=""
+            android:textColor="#222222"
+            android:textSize="16dp" />
+
+        <TextView
+            android:id="@+id/tv_actionBarTitle"
+            android:layout_width="wrap_content"
+            android:layout_height="match_parent"
+            android:layout_centerInParent="true"
+            android:gravity="center"
+            android:textColor="#222222"
+            android:textSize="22dp" />
+
+
+        <ImageView
+            android:id="@+id/iv_actionBarRight"
+            android:layout_width="25dp"
+            android:layout_height="25dp"
+            android:layout_alignParentRight="true"
+            android:layout_centerVertical="true"
+            android:visibility="gone" />
+
+        <TextView
+            android:id="@+id/tv_actionRight"
+            android:layout_width="wrap_content"
+            android:layout_height="match_parent"
+            android:layout_alignParentRight="true"
+            android:layout_toLeftOf="@+id/iv_actionBarRight"
+            android:gravity="center_vertical"
+            android:textColor="#222222"
+            android:textSize="18dp"
+            android:visibility="visible"
+            android:paddingRight="10dp"
+            />
+        <View
+            android:id="@+id/line"
+            android:layout_width="match_parent"
+            android:layout_height="1dp"
+            android:background="#EBEBEB"
+            android:layout_alignParentBottom="true"
+            android:visibility="gone"
+            ></View>
+    </RelativeLayout>
+</LinearLayout>

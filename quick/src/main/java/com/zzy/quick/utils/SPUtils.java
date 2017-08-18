@@ -3,11 +3,21 @@ package com.zzy.quick.utils;
 import android.content.Context;
 import android.content.SharedPreferences;
 import android.support.annotation.NonNull;
+import android.text.TextUtils;
+import android.util.Log;
 
+import java.io.ByteArrayInputStream;
+import java.io.ByteArrayOutputStream;
+import java.io.IOException;
+import java.io.ObjectInputStream;
+import java.io.ObjectOutputStream;
+import java.io.StreamCorruptedException;
 import java.util.Collections;
 import java.util.HashMap;
 import java.util.Map;
 import java.util.Set;
+
+import static android.R.attr.key;
 
 /**
  * <pre>
@@ -38,7 +48,7 @@ public final class SPUtils {
      * @return {@link SPUtils}
      */
     public static SPUtils getInstance(String spName) {
-        if (isSpace(spName)) spName = "spUtils";
+        if (isSpace(spName)) spName = "PlusOneLivePush";
         SPUtils spUtils = SP_UTILS_MAP.get(spName);
         if (spUtils == null) {
             spUtils = new SPUtils(spName);
@@ -224,6 +234,62 @@ public final class SPUtils {
      */
     public Set<String> getStringSet(@NonNull final String key) {
         return getStringSet(key, Collections.<String>emptySet());
+    }
+
+    /**
+     * SP中写入Object对象
+     * */
+    public void put(@NonNull final String key,@NonNull final Object obj){
+        try {
+            //先将序列化结果写到byte缓存中，其实就分配一个内存空间
+            ByteArrayOutputStream bos=new ByteArrayOutputStream();
+            ObjectOutputStream os=new ObjectOutputStream(bos);
+            //将对象序列化写入byte缓存
+            os.writeObject(obj);
+            //将序列化的数据转为16进制保存
+            String bytesToHexString = StringUtils.bytesToHexString(bos.toByteArray());
+            //保存该16进制数组
+            SharedPreferences.Editor editor=sp.edit();
+            editor.putString(key, bytesToHexString);
+            editor.commit();
+        } catch (IOException e) {
+            e.printStackTrace();
+            Log.e("", "保存obj失败");
+        }
+    }
+
+    /**
+     * 获取保存在SP中的对象
+     * */
+    public  Object getObject(@NonNull String key){
+        try {
+            if (sp.contains(key)) {
+                String string = sp.getString(key, "");
+                if(TextUtils.isEmpty(string)){
+                    return null;
+                }else{
+                    //将16进制的数据转为数组，准备反序列化
+                    byte[] stringToBytes = StringUtils.stringToBytes(string);
+                    ByteArrayInputStream bis=new ByteArrayInputStream(stringToBytes);
+                    ObjectInputStream is=new ObjectInputStream(bis);
+                    //返回反序列化得到的对象
+                    Object readObject = is.readObject();
+                    return readObject;
+                }
+            }
+        } catch (StreamCorruptedException e) {
+            // TODO Auto-generated catch block
+            e.printStackTrace();
+        } catch (IOException e) {
+            // TODO Auto-generated catch block
+            e.printStackTrace();
+        } catch (ClassNotFoundException e) {
+            // TODO Auto-generated catch block
+            e.printStackTrace();
+        }
+        //所有异常返回null
+        return null;
+
     }
 
     /**

@@ -1,6 +1,7 @@
 package com.zzy.quick.mvp.presenter;
 
 
+
 /**
  * 项目名称: QuickMvp
  * 创建人: 周正一
@@ -8,7 +9,6 @@ package com.zzy.quick.mvp.presenter;
  */
 
 public interface IPresenter<V> {
-    void loadData();
     void attachView(V view);
     void detachView();
 
