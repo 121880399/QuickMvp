@@ -7,7 +7,7 @@ package com.zzy.quick.mvp.model;
  * 创建时间：2017/7/17
  */
 
-public interface IModel<T> {
+public interface IModel {
 
     String getErrorMsg();   //后台返回的错误信息
 

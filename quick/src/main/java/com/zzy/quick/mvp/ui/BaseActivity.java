@@ -150,6 +150,7 @@ public abstract class BaseActivity<P extends IPresenter> extends RxAppCompatActi
 
         /**
          * 处理返回事件，如果在首页 连续按两次back键退出APP
+         * 此方法推荐在MainActivity的onBackPressed方法中调用
          */
         public void dealAppBack() {
                 if (!isExit) {

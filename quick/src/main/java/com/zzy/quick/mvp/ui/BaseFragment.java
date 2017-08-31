@@ -29,9 +29,9 @@ public abstract class BaseFragment<P extends IPresenter> extends RxFragment impl
     protected LayoutInflater layoutInflater;
     private View rootView;
     private Unbinder unbinder;
-    protected Activity context;
+    protected Activity mContext;
     private RxPermissions rxPermissions;
-    private P p;
+    private P mPresenter;
 
     @Nullable
     @Override
@@ -66,14 +66,14 @@ public abstract class BaseFragment<P extends IPresenter> extends RxFragment impl
     public void onAttach(Context context) {
         super.onAttach(context);
         if(context instanceof Activity){
-            this.context= (Activity) context;
+            this.mContext= (Activity) context;
         }
     }
 
     @Override
     public void onDetach() {
         super.onDetach();
-        context=null;
+        mContext=null;
     }
 
     @Override
@@ -83,22 +83,22 @@ public abstract class BaseFragment<P extends IPresenter> extends RxFragment impl
             EventBus.getDefault().unregister(this);
         }
 
-        if (getP() != null) {
-            getP().detachView();
+        if (getPresenter() != null) {
+            getPresenter().detachView();
         }
 
-        p=null;
+        mPresenter=null;
 
     }
 
-    protected P getP(){
-        if(p==null){
-            p=newPresenter();
-            if(p!=null){
-                p.attachView(this);
+    protected P getPresenter(){
+        if(mPresenter==null){
+            mPresenter=newPresenter();
+            if(mPresenter!=null){
+                mPresenter.attachView(this);
             }
         }
-        return p;
+        return mPresenter;
     }
 
     protected RxPermissions getRxPermissions(){
@@ -137,4 +137,10 @@ public abstract class BaseFragment<P extends IPresenter> extends RxFragment impl
      * 设置监听
      * */
     public abstract void setListener();
+
+    /**
+     * 显示错误信息
+     * */
+    public abstract  void showError(String msg);
+
 }

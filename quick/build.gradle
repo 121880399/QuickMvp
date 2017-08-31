@@ -49,6 +49,8 @@ dependencies {
         exclude module: 'support-annotations'
     }
 
+    compile rootProject.ext.dependencies["progressmanager"]
+
     //rx
     compile rootProject.ext.dependencies["rxjava2"]
     compile(rootProject.ext.dependencies["rxandroid2"]) {
