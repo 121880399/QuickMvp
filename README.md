@@ -25,3 +25,9 @@ QuickMvp集成了许多流行的开源库，使我们能够更快速更高效的
 9.[Androideventbus一个轻量级使用注解的Eventbus.](https://github.com/hehonghui/AndroidEventBus)<br> 
 10.[Glide 一个专注于平滑滚动的图片加载和缓存库.](https://github.com/bumptech/glide)<br> 
 11.[logger 用于打印Log的封装库，功能强大.](https://github.com/orhanobut/logger)<br> 
+
+## About Me
+Email:zhouzhengyi007@126.com<br>
+职位:android高级工程师<br>
+就职于:中车互联运力科技有限公司<br>
+简书:http://www.jianshu.com/u/ff764c6c19e4
