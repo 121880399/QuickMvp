@@ -13,7 +13,7 @@ import com.zzy.quick.R;
 
 
 /**
- * Created by 邵鸿轩 on 14/11/26.
+ * Created by 周正一 on 14/11/26.
  */
 public class ActionBarView {
 
