@@ -1,10 +1,16 @@
 # QuickMvp
-QuickMvp 是一个轻量级的MVP快速开发框架。
+QuickMvp 是一个轻量级的MVP快速开发框架，参考了gitHub上一些知名的MVP框架，并用于实际的开发项目中，非常适用于中小型项目的快速开发，非常的轻，不像其他的MVP快速开发框架，虽然集成了很多东西，但是用起来实在太繁琐，学习成本也很高。本框架把通用性的东西封装了起来，把各种View库排除掉，毕竟每个项目需求不同。本MVP框架一般情况下不需要写Contract接口。
 ![](https://github.com/121880399/QuickMvp/raw/master/doc/QuickMVP.png)  
+
 
 ## 目录结构
 
 ![](https://github.com/121880399/QuickMvp/raw/master/doc/menu.png)  
+
+## UML图
+
+![](https://github.com/121880399/QuickMvp/raw/master/doc/QuickMvpUML.png) 
+
 ## Libraries介绍
 
 QuickMvp集成了许多流行的开源库，使我们能够更快速更高效的进行开发。原则上QuickMvp包含的开源库都是在QuickMvp中使用到的，还有很多view类型的库并没有直接包含进来，但是我们提供了强大的config.gradle，里面有质量很高的开源库供大家引用。<br> 
@@ -19,3 +25,9 @@ QuickMvp集成了许多流行的开源库，使我们能够更快速更高效的
 9.[Androideventbus一个轻量级使用注解的Eventbus.](https://github.com/hehonghui/AndroidEventBus)<br> 
 10.[Glide 一个专注于平滑滚动的图片加载和缓存库.](https://github.com/bumptech/glide)<br> 
 11.[logger 用于打印Log的封装库，功能强大.](https://github.com/orhanobut/logger)<br> 
+
+## About Me
+Email:zhouzhengyi007@126.com<br>
+职位:android高级工程师<br>
+就职于:[中车互联运力科技有限公司](http://www.unitransdata.com/)<br>
+简书:http://www.jianshu.com/u/ff764c6c19e4
