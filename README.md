@@ -1,6 +1,7 @@
 # QuickMvp
-QuickMvp 是一个轻量级的MVP快速开发框架。
+QuickMvp 是一个轻量级的MVP快速开发框架，参考了gitHub上一些知名的MVP框架，并用于实际的开发项目中，非常适用于中小型项目的快速开发，非常的轻，不像其他的MVP快速开发框架，虽然集成了很多东西，但是用起来实在太繁琐，学习成本也很高。本框架把通用性的东西封装了起来，把各种View库排除掉，毕竟每个项目需求不同。本MVP框架一般情况下不需要写Contract接口。
 ![](https://github.com/121880399/QuickMvp/raw/master/doc/QuickMVP.png)  
+
 
 ## 目录结构
 
