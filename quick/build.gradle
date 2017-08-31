@@ -45,14 +45,9 @@ dependencies {
     compile rootProject.ext.dependencies["annotations"]
 
     //view
-    compile(rootProject.ext.dependencies["autolayout"]) {
-        exclude group: 'com.android.support'
-    }
     compile(rootProject.ext.dependencies["butterknife"]) {
         exclude module: 'support-annotations'
     }
-    //进度条
-    compile(rootProject.ext.dependencies["circleprogress"])
 
     //rx
     compile rootProject.ext.dependencies["rxjava2"]
@@ -60,9 +55,6 @@ dependencies {
         exclude module: 'rxjava'
     }
 
-    compile(rootProject.ext.dependencies["rxcache-jolyglot-gson"]) {
-        exclude module: 'gson'
-    }
     compile(rootProject.ext.dependencies["rxlifecycle2"]) {
         exclude module: 'rxjava'
     }
@@ -104,7 +96,6 @@ dependencies {
     compile rootProject.ext.dependencies["glide"]
     compile rootProject.ext.dependencies["glide-okhttp3"]
 
-    compile rootProject.ext.dependencies["progress"]
 
     //tools
     provided rootProject.ext.dependencies["javax.annotation"]
