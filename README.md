@@ -29,5 +29,5 @@ QuickMvp集成了许多流行的开源库，使我们能够更快速更高效的
 ## About Me
 Email:zhouzhengyi007@126.com<br>
 职位:android高级工程师<br>
-就职于:中车互联运力科技有限公司<br>
+就职于:[中车互联运力科技有限公司](http://www.unitransdata.com/)<br>
 简书:http://www.jianshu.com/u/ff764c6c19e4
