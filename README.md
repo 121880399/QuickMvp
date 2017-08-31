@@ -2,6 +2,9 @@
 QuickMvp 是一个轻量级的MVP快速开发框架。
 ![](https://github.com/121880399/QuickMvp/raw/master/doc/QuickMVP.png)  
 
+## 目录结构
+
+![](https://github.com/121880399/QuickMvp/raw/master/doc/menu.png)  
 ## Libraries介绍
 
 QuickMvp集成了许多流行的开源库，使我们能够更快速更高效的进行开发。原则上QuickMvp包含的开源库都是在QuickMvp中使用到的，还有很多view类型的库并没有直接包含进来，但是我们提供了强大的config.gradle，里面有质量很高的开源库供大家引用。<br> 
