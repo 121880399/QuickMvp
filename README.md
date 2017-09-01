@@ -1,4 +1,6 @@
 # QuickMvp
+[![](https://jitpack.io/v/121880399/QuickMvp.svg)](https://jitpack.io/#121880399/QuickMvp)<br>
+
 QuickMvp 是一个轻量级的MVP快速开发框架，参考了gitHub上一些知名的MVP框架，并用于实际的开发项目中，非常适用于中小型项目的快速开发，非常的轻，不像其他的MVP快速开发框架，虽然集成了很多东西，但是用起来实在太繁琐，学习成本也很高。本框架把通用性的东西封装了起来，把各种View库排除掉，毕竟每个项目需求不同。本MVP框架一般情况下不需要写Contract接口。
 ![](https://github.com/121880399/QuickMvp/raw/master/doc/QuickMVP.png)  
 
@@ -26,6 +28,22 @@ QuickMvp集成了许多流行的开源库，使我们能够更快速更高效的
 10.[Glide 一个专注于平滑滚动的图片加载和缓存库.](https://github.com/bumptech/glide)<br> 
 11.[logger 用于打印Log的封装库，功能强大.](https://github.com/orhanobut/logger)<br> 
 
+## 第二种方式，通过JitPack引入<br>
+1.在根目录的gradle文件中配置:<br>
+```
+	allprojects {
+		repositories {
+			...
+			maven { url 'https://jitpack.io' }
+		}
+	}
+  ```
+  2.添加依赖:<br>
+  ```
+  	dependencies {
+	        compile 'com.github.121880399:QuickMvp:4abf5b712d'
+	}
+  ```
 ## About Me
 Email:zhouzhengyi007@126.com<br>
 职位:android高级工程师<br>
