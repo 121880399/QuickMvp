@@ -41,7 +41,7 @@ QuickMvp集成了许多流行的开源库，使我们能够更快速更高效的
   2.添加依赖:<br>
   ```
   	dependencies {
-	        compile 'com.github.121880399:QuickMvp:4abf5b712d'
+	        compile 'com.github.121880399:QuickMvp:v1.0.0'
 	}
   ```
 ## About Me
