@@ -31,7 +31,7 @@ QuickMvp集成了许多流行的开源库，使我们能够更快速更高效的
 ## 第一种方式<br>
 1.clone QuickMvp到本地:<br>
 ```
-git clone https://github.com/limedroid/XDroidMvp.git
+git clone https://github.com/121880399/QuickMvp.git
 ```
 
 2.在app module的build.gradle中加入以下代码:<br>
