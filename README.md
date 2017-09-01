@@ -28,6 +28,22 @@ QuickMvp集成了许多流行的开源库，使我们能够更快速更高效的
 10.[Glide 一个专注于平滑滚动的图片加载和缓存库.](https://github.com/bumptech/glide)<br> 
 11.[logger 用于打印Log的封装库，功能强大.](https://github.com/orhanobut/logger)<br> 
 
+## 第二种方式，通过JitPack引入<br>
+1.在根目录的gradle文件中配置:<br>
+```
+	allprojects {
+		repositories {
+			...
+			maven { url 'https://jitpack.io' }
+		}
+	}
+  ```
+  2.添加依赖:<br>
+  ```
+  	dependencies {
+	        compile 'com.github.121880399:QuickMvp:4abf5b712d'
+	}
+  ```
 ## About Me
 Email:zhouzhengyi007@126.com<br>
 职位:android高级工程师<br>
