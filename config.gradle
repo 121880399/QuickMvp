@@ -44,7 +44,7 @@ ext {
             //view
             "autolayout"               : "com.zhy:autolayout:1.4.5",
             "butterknife"              : "com.jakewharton:butterknife:${version["butterknifeSdkVersion"]}",
-            "butterknife-apt"     : "com.jakewharton:butterknife-compiler:${version["butterknifeSdkVersion"]}",
+            "butterknife-apt"          : "com.jakewharton:butterknife-compiler:${version["butterknifeSdkVersion"]}",
             "pickerview"               : "com.contrarywind:Android-PickerView:3.2.5",
             "photoview"                : "com.github.chrisbanes.photoview:library:1.2.3",
             "numberprogressbar"        : "com.daimajia.numberprogressbar:library:1.2@aar",
@@ -52,6 +52,13 @@ ext {
             "paginate"                 : "com.github.markomilos:paginate:0.5.1",
             "vlayout"                  : "com.alibaba.android:vlayout:1.0.6@aar",
             "circleprogress"           : "com.github.lzyzsd:circleprogress:1.2.1",
+            "nice-spinner"             : "com.github.arcadefire:nice-spinner:1.2",
+            "banner"                   : "com.youth.banner:banner:1.4.9",
+            "refreshLayout"            : "com.scwang.smartrefresh:SmartRefreshLayout:1.0.3",
+            "refreshHeader"            : "com.scwang.smartrefresh:SmartRefreshHeader:1.0.3",
+            "recycleView-adapter"      : "com.zhy:base-rvadapter:3.0.3",
+            "overscroll"               : "me.everything:overscroll-decor-android:1.0.3",
+            "multitype"                : "me.drakeet.multitype:multitype:3.1.0",
 
             //rx1
             "rxandroid"                : "io.reactivex:rxandroid:1.2.1",
