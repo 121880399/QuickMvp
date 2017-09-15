@@ -101,6 +101,7 @@
             android:orientation="vertical"
             android:padding="20dp"
             android:background="#50FFFFFF"
+            android:layout_marginTop="20dp"
             >
 
             <LinearLayout
@@ -109,25 +110,27 @@
                 android:orientation="horizontal"
                 >
                 <TextView
+                    android:id="@+id/tv_windDirection"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:text="东北风"
-                    android:textColor="@android:color/white"
+                    android:textColor="@android:color/black"
                     android:textSize="20dp"
                     />
                 <TextView
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:text="风速"
-                    android:textColor="@android:color/white"
+                    android:textColor="@android:color/black"
                     android:textSize="12dp"
                     android:layout_marginLeft="5dp"
                     />
                 <TextView
+                    android:id="@+id/tv_windSpeed"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:text="24kmph"
-                    android:textColor="@android:color/white"
+                    android:textColor="@android:color/black"
                     android:textSize="12dp"
                     />
 
@@ -135,15 +138,16 @@
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:text="风力"
-                    android:textColor="@android:color/white"
+                    android:textColor="@android:color/black"
                     android:textSize="12dp"
                     android:layout_marginLeft="5dp"
                     />
                 <TextView
+                    android:id="@+id/tv_windPower"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:text="4-5级"
-                    android:textColor="@android:color/white"
+                    android:textColor="@android:color/black"
                     android:textSize="12dp"
                     />
             </LinearLayout>
@@ -157,14 +161,15 @@
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:text="气压："
-                    android:textColor="@android:color/white"
+                    android:textColor="@android:color/black"
                     android:textSize="14dp"
                     />
                 <TextView
+                    android:id="@+id/tv_airPressure"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:text="1025"
-                    android:textColor="@android:color/white"
+                    android:textColor="@android:color/black"
                     android:textSize="14dp"
                     />
             </LinearLayout>
@@ -178,14 +183,15 @@
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:text="能见度："
-                    android:textColor="@android:color/white"
+                    android:textColor="@android:color/black"
                     android:textSize="14dp"
                     />
                 <TextView
+                    android:id="@+id/tv_visibility"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:text="1km"
-                    android:textColor="@android:color/white"
+                    android:textColor="@android:color/black"
                     android:textSize="14dp"
                     />
             </LinearLayout>
@@ -200,14 +206,15 @@
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:text="降水量："
-                    android:textColor="@android:color/white"
+                    android:textColor="@android:color/black"
                     android:textSize="14dp"
                     />
                 <TextView
+                    android:id="@+id/tv_rainfall"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:text="500mm"
-                    android:textColor="@android:color/white"
+                    android:textColor="@android:color/black"
                     android:textSize="14dp"
                     />
             </LinearLayout>
@@ -222,18 +229,20 @@
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:text="相对湿度："
-                    android:textColor="@android:color/white"
+                    android:textColor="@android:color/black"
                     android:textSize="14dp"
                     />
                 <TextView
+                    android:id="@+id/tv_humidity"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:text="31%"
-                    android:textColor="@android:color/white"
+                    android:textColor="@android:color/black"
                     android:textSize="14dp"
                     />
             </LinearLayout>
         </LinearLayout>
+        <include layout="@layout/layout_placeview"/>
         <LinearLayout
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
@@ -255,7 +264,71 @@
                     android:layout_gravity="center_horizontal"
                     android:layout_marginTop="5dp"
                     />
-
+                <LinearLayout
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:orientation="horizontal"
+                    android:layout_gravity="center_horizontal"
+                    >
+                    <ImageView
+                        android:layout_width="60dp"
+                        android:layout_height="60dp"
+                        android:src="@drawable/default_weather"
+                        />
+                    <RelativeLayout
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_marginTop="5dp"
+                        >
+                        <TextView
+                            android:id="@+id/tv_todayHighTemp"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:text="35"
+                            android:textSize="18dp"
+                            android:textColor="@android:color/white"
+                            />
+                        <TextView
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:text="o"
+                            android:layout_toRightOf="@id/tv_todayHighTemp"
+                            android:layout_alignTop="@id/tv_todayHighTemp"
+                            android:textSize="10dp"
+                            android:textColor="@android:color/white"
+                            />
+                        <TextView
+                            android:id="@+id/tv_todaylowTemp"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:text="21"
+                            android:textSize="18dp"
+                            android:textColor="@android:color/white"
+                            android:layout_below="@id/tv_todayHighTemp"
+                            android:layout_marginTop="5dp"
+                            />
+                        <TextView
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:text="o"
+                            android:layout_toRightOf="@id/tv_todaylowTemp"
+                            android:layout_alignTop="@id/tv_todaylowTemp"
+                            android:textSize="10dp"
+                            android:textColor="@android:color/white"
+                            />
+                    </RelativeLayout>
+                </LinearLayout>
+                <TextView
+                    android:id="@+id/tv_todayWeather"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="多云"
+                    android:textSize="14dp"
+                    android:textColor="@android:color/white"
+                    android:layout_gravity="center_horizontal"
+                    android:layout_marginTop="5dp"
+                    android:layout_marginBottom="5dp"
+                    />
             </LinearLayout>
             <LinearLayout
                 android:layout_width="0dp"
@@ -272,6 +345,71 @@
                     android:layout_gravity="center_horizontal"
                     android:layout_marginTop="5dp"
                     />
+                <LinearLayout
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:orientation="horizontal"
+                    android:layout_gravity="center_horizontal"
+                    >
+                    <ImageView
+                        android:layout_width="60dp"
+                        android:layout_height="60dp"
+                        android:src="@drawable/default_weather"
+                        />
+                    <RelativeLayout
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_marginTop="5dp"
+                        >
+                        <TextView
+                            android:id="@+id/tv_tomorrowHighTemp"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:text="35"
+                            android:textSize="18dp"
+                            android:textColor="@android:color/white"
+                            />
+                        <TextView
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:text="o"
+                            android:layout_toRightOf="@id/tv_tomorrowHighTemp"
+                            android:layout_alignTop="@id/tv_tomorrowHighTemp"
+                            android:textSize="10dp"
+                            android:textColor="@android:color/white"
+                            />
+                        <TextView
+                            android:id="@+id/tv_tomorrowLowTemp"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:text="21"
+                            android:textSize="18dp"
+                            android:textColor="@android:color/white"
+                            android:layout_below="@id/tv_tomorrowHighTemp"
+                            android:layout_marginTop="5dp"
+                            />
+                        <TextView
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:text="o"
+                            android:layout_toRightOf="@id/tv_tomorrowLowTemp"
+                            android:layout_alignTop="@id/tv_tomorrowLowTemp"
+                            android:textSize="10dp"
+                            android:textColor="@android:color/white"
+                            />
+                    </RelativeLayout>
+                </LinearLayout>
+                <TextView
+                    android:id="@+id/tv_tomorrowWeather"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="多云"
+                    android:textSize="14dp"
+                    android:textColor="@android:color/white"
+                    android:layout_gravity="center_horizontal"
+                    android:layout_marginTop="5dp"
+                    android:layout_marginBottom="5dp"
+                    />
             </LinearLayout>
             <LinearLayout
                 android:layout_width="0dp"
@@ -287,6 +425,71 @@
                     android:textColor="@android:color/white"
                     android:layout_gravity="center_horizontal"
                     android:layout_marginTop="5dp"
+                    />
+                <LinearLayout
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:orientation="horizontal"
+                    android:layout_gravity="center_horizontal"
+                    >
+                    <ImageView
+                        android:layout_width="60dp"
+                        android:layout_height="60dp"
+                        android:src="@drawable/default_weather"
+                        />
+                    <RelativeLayout
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_marginTop="5dp"
+                        >
+                        <TextView
+                            android:id="@+id/tv_afterDayHighTemp"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:text="35"
+                            android:textSize="18dp"
+                            android:textColor="@android:color/white"
+                            />
+                        <TextView
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:text="o"
+                            android:layout_toRightOf="@id/tv_afterDayHighTemp"
+                            android:layout_alignTop="@id/tv_afterDayHighTemp"
+                            android:textSize="10dp"
+                            android:textColor="@android:color/white"
+                            />
+                        <TextView
+                            android:id="@+id/tv_afterDayLowTemp"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:text="21"
+                            android:textSize="18dp"
+                            android:textColor="@android:color/white"
+                            android:layout_below="@id/tv_afterDayHighTemp"
+                            android:layout_marginTop="5dp"
+                            />
+                        <TextView
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:text="o"
+                            android:layout_toRightOf="@id/tv_afterDayLowTemp"
+                            android:layout_alignTop="@id/tv_afterDayLowTemp"
+                            android:textSize="10dp"
+                            android:textColor="@android:color/white"
+                            />
+                    </RelativeLayout>
+                </LinearLayout>
+                <TextView
+                    android:id="@+id/tv_afterDayWeather"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="多云"
+                    android:textSize="14dp"
+                    android:textColor="@android:color/white"
+                    android:layout_gravity="center_horizontal"
+                    android:layout_marginTop="5dp"
+                    android:layout_marginBottom="5dp"
                     />
             </LinearLayout>
         </LinearLayout>

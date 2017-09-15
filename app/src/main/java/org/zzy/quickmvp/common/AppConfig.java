@@ -13,4 +13,7 @@ public class AppConfig {
 
     //图片请求地址
     public static final String API_ICON_URL="https://cdn.heweather.com/cond_icon/";
+
+    //天气API KEY
+    public static final String APP_KEY="e67a8faea6d24fe3857e8431518ed442";
 }
