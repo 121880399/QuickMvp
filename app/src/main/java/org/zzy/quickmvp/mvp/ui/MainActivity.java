@@ -6,7 +6,9 @@ import android.widget.ImageView;
 import android.widget.TextView;
 
 import com.scwang.smartrefresh.layout.SmartRefreshLayout;
+import com.scwang.smartrefresh.layout.api.RefreshLayout;
 import com.scwang.smartrefresh.layout.header.ClassicsHeader;
+import com.scwang.smartrefresh.layout.listener.OnRefreshListener;
 import com.zzy.quick.image.ImageFactory;
 import com.zzy.quick.mvp.ui.BaseActivity;
 import com.zzy.quick.utils.BarUtils;
@@ -87,9 +89,9 @@ public class MainActivity extends BaseActivity<WeatherPresenter> {
 
     @Override
     public void initData() {
-        getPresenter().getCurrentWeather("北京");
-        getPresenter().getForecastWeather("北京");
+        getData();
     }
+
 
     @Override
     public void setBeforeLayout() {
@@ -106,7 +108,13 @@ public class MainActivity extends BaseActivity<WeatherPresenter> {
 
     @Override
     public void setListener() {
-
+        refreshLayout.setOnRefreshListener(new OnRefreshListener() {
+            @Override
+            public void onRefresh(RefreshLayout refreshlayout) {
+                getData();
+                refreshlayout.finishRefresh(1000);
+            }
+        });
     }
 
     @Override
@@ -119,6 +127,10 @@ public class MainActivity extends BaseActivity<WeatherPresenter> {
         return new WeatherPresenter();
     }
 
+    private void getData(){
+        getPresenter().getCurrentWeather("北京");
+        getPresenter().getForecastWeather("北京");
+    }
 
     /***
      * 更新当前天气
