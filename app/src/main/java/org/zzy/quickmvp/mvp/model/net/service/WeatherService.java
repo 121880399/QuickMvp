@@ -1,6 +1,7 @@
 package org.zzy.quickmvp.mvp.model.net.service;
 
 import org.zzy.quickmvp.mvp.model.bean.CurrentWeather;
+import org.zzy.quickmvp.mvp.model.bean.ForecastWeather;
 
 import io.reactivex.Flowable;
 import retrofit2.http.GET;
@@ -20,5 +21,5 @@ public interface WeatherService {
 
 
     @GET("v5/forecast")
-    Flowable<CurrentWeather> getForecastWeather(@Query("city") String city, @Query("key") String key);
+    Flowable<ForecastWeather> getForecastWeather(@Query("city") String city, @Query("key") String key);
 }

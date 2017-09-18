@@ -4,14 +4,12 @@ import com.zzy.quick.mvp.presenter.BasePresenter;
 import com.zzy.quick.net.HttpManager;
 import com.zzy.quick.net.HttpSubscriber;
 import com.zzy.quick.net.NetError;
-import com.zzy.quick.utils.log.LogFactory;
 
 import org.zzy.quickmvp.common.AppConfig;
 import org.zzy.quickmvp.mvp.model.bean.CurrentWeather;
+import org.zzy.quickmvp.mvp.model.bean.ForecastWeather;
 import org.zzy.quickmvp.mvp.model.net.api.WeatherApi;
 import org.zzy.quickmvp.mvp.ui.MainActivity;
-
-import static android.icu.lang.UCharacter.GraphemeClusterBreak.T;
 
 /**
  * 项目名称: QuickMvp
@@ -37,6 +35,26 @@ public class WeatherPresenter extends BasePresenter<MainActivity>{
                     @Override
                     public void onNext(CurrentWeather currentWeather) {
                         getView().updataCurrentWeather(currentWeather);
+                    }
+                });
+    }
+
+    /**
+     * 得到未来3天的天气数据
+     * */
+    public void getForecastWeather(String city){
+        WeatherApi.getWeatherService().getForecastWeather(city,AppConfig.APP_KEY)
+                .compose(HttpManager.<ForecastWeather>getErrorTransformer())
+                .compose(HttpManager.<ForecastWeather>getFlowableScheduler())
+                .subscribe(new HttpSubscriber<ForecastWeather>() {
+                    @Override
+                    protected void onFail(NetError error) {
+
+                    }
+
+                    @Override
+                    public void onNext(ForecastWeather forecastWeather) {
+                        getView().updateForecastWeather(forecastWeather);
                     }
                 });
     }

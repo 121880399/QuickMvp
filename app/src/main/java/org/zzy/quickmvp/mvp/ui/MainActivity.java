@@ -12,6 +12,7 @@ import com.zzy.quick.utils.BarUtils;
 
 import org.zzy.quickmvp.R;
 import org.zzy.quickmvp.mvp.model.bean.CurrentWeather;
+import org.zzy.quickmvp.mvp.model.bean.ForecastWeather;
 import org.zzy.quickmvp.mvp.presenter.WeatherPresenter;
 
 import butterknife.BindView;
@@ -59,6 +60,14 @@ public class MainActivity extends BaseActivity<WeatherPresenter> {
     TextView tvWindSpeed;
     @BindView(R.id.tv_windPower)
     TextView tvWindPower;
+    @BindView(R.id.tv_airPressure)
+    TextView tvAirPressure;
+    @BindView(R.id.tv_visibility)
+    TextView tvVisibility;
+    @BindView(R.id.tv_rainfall)
+    TextView tvRainfall;
+    @BindView(R.id.tv_humidity)
+    TextView tvHumidity;
 
     @Override
     public int getLayoutId() {
@@ -68,6 +77,7 @@ public class MainActivity extends BaseActivity<WeatherPresenter> {
     @Override
     public void initData() {
         getPresenter().getCurrentWeather("北京");
+        getPresenter().getForecastWeather("北京");
     }
 
     @Override
@@ -109,8 +119,20 @@ public class MainActivity extends BaseActivity<WeatherPresenter> {
         tvWindDirection.setText(now.getWind().getDir());
         tvWindSpeed.setText(now.getWind().getSpd());
         tvWindPower.setText(now.getWind().getSc());
+        tvAirPressure.setText(now.getPres());
+        tvVisibility.setText(now.getVis());
+        tvRainfall.setText(now.getPcpn());
+        tvHumidity.setText(now.getHum());
+    }
+
+
+    /**
+     * 更新3天天气
+     * */
+    public void updateForecastWeather(ForecastWeather forecastWeather){
 
     }
+
 
 
 }
