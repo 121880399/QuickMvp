@@ -27,7 +27,7 @@ public class GlideLoader implements ImageLoader{
     private static final String ASSETS_HEADER="file:///android_asset/";
 
     @Override
-    public void loadeNet(String url, ImageView target) {
+    public void loadNet(String url, ImageView target) {
         loadNet(url,target,null);
     }
 

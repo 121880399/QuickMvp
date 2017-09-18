@@ -22,7 +22,7 @@ public interface ImageLoader {
      *  @param url 图片地址
      *  @param target  将图片加载到哪个ImageView
      **/
-    void loadeNet(String url,ImageView target);
+    void loadNet(String url,ImageView target);
 
     /**
      *
