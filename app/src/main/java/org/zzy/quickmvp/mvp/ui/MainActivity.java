@@ -7,13 +7,18 @@ import android.widget.TextView;
 
 import com.scwang.smartrefresh.layout.SmartRefreshLayout;
 import com.scwang.smartrefresh.layout.header.ClassicsHeader;
+import com.zzy.quick.image.ImageFactory;
 import com.zzy.quick.mvp.ui.BaseActivity;
 import com.zzy.quick.utils.BarUtils;
+import com.zzy.quick.utils.TimeUtils;
 
 import org.zzy.quickmvp.R;
+import org.zzy.quickmvp.common.AppConfig;
 import org.zzy.quickmvp.mvp.model.bean.CurrentWeather;
 import org.zzy.quickmvp.mvp.model.bean.ForecastWeather;
 import org.zzy.quickmvp.mvp.presenter.WeatherPresenter;
+
+import java.util.List;
 
 import butterknife.BindView;
 import butterknife.ButterKnife;
@@ -68,6 +73,12 @@ public class MainActivity extends BaseActivity<WeatherPresenter> {
     TextView tvRainfall;
     @BindView(R.id.tv_humidity)
     TextView tvHumidity;
+    @BindView(R.id.iv_todayWeatherImg)
+    ImageView ivTodayWeatherImg;
+    @BindView(R.id.iv_tomorrowWeatherImg)
+    ImageView ivTomorrowWeatherImg;
+    @BindView(R.id.iv_afterDayWeatherImg)
+    ImageView ivAfterDayWeatherImg;
 
     @Override
     public int getLayoutId() {
@@ -128,11 +139,39 @@ public class MainActivity extends BaseActivity<WeatherPresenter> {
 
     /**
      * 更新3天天气
-     * */
-    public void updateForecastWeather(ForecastWeather forecastWeather){
+     */
+    public void updateForecastWeather(ForecastWeather forecastWeather) {
+        List<ForecastWeather.HeWeather5Bean.DailyForecastBean> forecastWeatherList = forecastWeather.getHeWeather5().get(0).getDaily_forecast();
+        ForecastWeather.HeWeather5Bean.DailyForecastBean today = forecastWeatherList.get(0);
+        ForecastWeather.HeWeather5Bean.DailyForecastBean tomorrow = forecastWeatherList.get(1);
+        ForecastWeather.HeWeather5Bean.DailyForecastBean afterDay = forecastWeatherList.get(2);
+
+        tvTodayHighTemp.setText(today.getTmp().getMax());
+        tvTodaylowTemp.setText(today.getTmp().getMin());
+        setWeatherAndImg(tvTodayWeather,ivTodayWeatherImg,today);
+
+        tvTomorrowHighTemp.setText(tomorrow.getTmp().getMax());
+        tvTomorrowLowTemp.setText(tomorrow.getTmp().getMin());
+        setWeatherAndImg(tvTomorrowWeather,ivTomorrowWeatherImg,tomorrow);
+
+        tvAfterDayHighTemp.setText(afterDay.getTmp().getMax());
+        tvAfterDayLowTemp.setText(afterDay.getTmp().getMin());
+        setWeatherAndImg(tvAfterDayWeather,ivAfterDayWeatherImg,afterDay);
+
 
     }
 
-
+    /**
+     * 根据当前是否是白天来设置天气情况和图片
+     * */
+    private void setWeatherAndImg(TextView weather,ImageView weatherImg,ForecastWeather.HeWeather5Bean.DailyForecastBean day){
+        if (TimeUtils.isDaytime()) {
+            weather.setText(day.getCond().getTxt_d());
+            ImageFactory.getImageLoader().loadNet(AppConfig.API_ICON_URL + day.getCond().getCode_d() + ".png", weatherImg);
+        } else {
+            weather.setText(day.getCond().getTxt_n());
+            ImageFactory.getImageLoader().loadNet(AppConfig.API_ICON_URL + day.getCond().getCode_n() + ".png", weatherImg);
+        }
+    }
 
 }

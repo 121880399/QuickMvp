@@ -4,6 +4,7 @@ import com.zzy.quick.mvp.presenter.BasePresenter;
 import com.zzy.quick.net.HttpManager;
 import com.zzy.quick.net.HttpSubscriber;
 import com.zzy.quick.net.NetError;
+import com.zzy.quick.utils.log.LogFactory;
 
 import org.zzy.quickmvp.common.AppConfig;
 import org.zzy.quickmvp.mvp.model.bean.CurrentWeather;
@@ -29,7 +30,7 @@ public class WeatherPresenter extends BasePresenter<MainActivity>{
                 .subscribe(new HttpSubscriber<CurrentWeather>() {
                     @Override
                     protected void onFail(NetError error) {
-
+                        LogFactory.getLogUtil().d(error.getMessage());
                     }
 
                     @Override
@@ -49,7 +50,7 @@ public class WeatherPresenter extends BasePresenter<MainActivity>{
                 .subscribe(new HttpSubscriber<ForecastWeather>() {
                     @Override
                     protected void onFail(NetError error) {
-
+                        LogFactory.getLogUtil().d(error.getMessage());
                     }
 
                     @Override
@@ -58,4 +59,5 @@ public class WeatherPresenter extends BasePresenter<MainActivity>{
                     }
                 });
     }
+
 }

@@ -16,10 +16,10 @@ import retrofit2.http.Query;
 
 public interface WeatherService {
 
-    @GET("v5/now")
+    @GET("now")
     Flowable<CurrentWeather> getCurrentTimeWeather(@Query("city") String city, @Query("key") String key);
 
 
-    @GET("v5/forecast")
+    @GET("forecast")
     Flowable<ForecastWeather> getForecastWeather(@Query("city") String city, @Query("key") String key);
 }
