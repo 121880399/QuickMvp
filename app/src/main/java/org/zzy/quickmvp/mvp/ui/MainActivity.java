@@ -137,7 +137,7 @@ public class MainActivity extends BaseActivity<WeatherPresenter> {
      */
     public void updataCurrentWeather(CurrentWeather currentWeather) {
         CurrentWeather.HeWeather5Bean.NowBean now = currentWeather.getHeWeather5().get(0).getNow();
-        tvCity.setText(now.getCond().getTxt());
+        tvWeather.setText(now.getCond().getTxt());
         tvTemperature.setText(now.getTmp());
         tvWindDirection.setText(now.getWind().getDir());
         tvWindSpeed.setText(now.getWind().getSpd());
