@@ -11,5 +11,4 @@ package com.zzy.quick.mvp.presenter;
 public interface IPresenter<V> {
     void attachView(V view);
     void detachView();
-
 }

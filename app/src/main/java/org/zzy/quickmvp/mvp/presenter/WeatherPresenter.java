@@ -60,4 +60,5 @@ public class WeatherPresenter extends BasePresenter<MainActivity>{
                 });
     }
 
+
 }

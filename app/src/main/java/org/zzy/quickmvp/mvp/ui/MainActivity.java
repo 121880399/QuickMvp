@@ -1,6 +1,8 @@
 package org.zzy.quickmvp.mvp.ui;
 
 import android.os.Bundle;
+import android.provider.Settings;
+import android.util.Log;
 import android.view.View;
 import android.widget.ImageView;
 import android.widget.TextView;
@@ -13,6 +15,7 @@ import com.zzy.quick.image.ImageFactory;
 import com.zzy.quick.mvp.ui.BaseActivity;
 import com.zzy.quick.utils.BarUtils;
 import com.zzy.quick.utils.TimeUtils;
+import com.zzy.quick.utils.log.LogFactory;
 
 import org.zzy.quickmvp.R;
 import org.zzy.quickmvp.common.AppConfig;

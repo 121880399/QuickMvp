@@ -1,5 +1,5 @@
 apply plugin: 'com.android.application'
-apply plugin: 'com.neenbedankt.android-apt'
+
 
 android {
     compileSdkVersion rootProject.ext.android["compileSdkVersion"]
@@ -10,6 +10,7 @@ android {
         targetSdkVersion rootProject.ext.android["targetSdkVersion"]
         versionCode rootProject.ext.android["versionCode"]
         versionName rootProject.ext.android["versionName"]
+        multiDexEnabled true
     }
     buildTypes {
         release {
@@ -21,7 +22,7 @@ android {
 
 dependencies {
     compile fileTree(include: ['*.jar'], dir: 'libs')
-    apt rootProject.ext.dependencies["butterknife-apt"]
+    annotationProcessor rootProject.ext.dependencies["butterknife-apt"]
     compile rootProject.ext.dependencies["refreshLayout"]
     compile rootProject.ext.dependencies["refreshHeader"]
     compile project(':quick')
